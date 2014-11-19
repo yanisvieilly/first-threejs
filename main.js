@@ -57,7 +57,7 @@ camera.position.set(0, 0, 0);
 controls = new THREE.PointerLockControls(camera);
 scene.add(controls.getObject());
 
-var cubeGeometry = new THREE.CubeGeometry(20, 20, 20);
+var cubeGeometry = new THREE.BoxGeometry(20, 20, 20);
 var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0xCC0000 });
 var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 cube.position.set(0, 20, -40);
@@ -76,7 +76,7 @@ for (i = 0; i < RANDOM_CUBES_NUMBER; i++)
     scene.add(cubes[i]);
 }
 
-var planeGeometry = new THREE.PlaneGeometry(1000, 1000);
+var planeGeometry = new THREE.PlaneBufferGeometry(1000, 1000);
 var planeMaterial = new THREE.MeshPhongMaterial({ color: 0x99CCFF });
 var plane = new THREE.Mesh(planeGeometry, planeMaterial);
 plane.rotation.x = -Math.PI / 2;
