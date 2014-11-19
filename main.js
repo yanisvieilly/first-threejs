@@ -57,15 +57,6 @@ camera.position.set(0, 0, 0);
 controls = new THREE.PointerLockControls(camera);
 scene.add(controls.getObject());
 
-var raycaster = new THREE.Raycaster();
-
-var playerRays = [
-    new THREE.Vector3(0, 0, 1),  // Backward
-    new THREE.Vector3(1, 0, 0),  // Left
-    new THREE.Vector3(0, 0, -1), // Forward
-    new THREE.Vector3(-1, 0, 0)  // Right
-];
-
 var cubeGeometry = new THREE.CubeGeometry(20, 20, 20);
 var cubeMaterial = new THREE.MeshLambertMaterial({ color: 0xCC0000 });
 var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
@@ -108,33 +99,41 @@ light.shadowMapHeight = 2048;
 light.intensity = 1.25;
 scene.add(light);
 
+var raycaster = new THREE.Raycaster();
+
+var playerRays = [
+  new THREE.Vector3(0, 0, 1),  // Backward
+  new THREE.Vector3(1, 0, 0),  // Left
+  new THREE.Vector3(0, 0, -1), // Forward
+  new THREE.Vector3(-1, 0, 0)  // Right
+];
+
 function render() {
-    requestAnimationFrame(render);
+  requestAnimationFrame(render);
 
-    for (var i = 0; i < 4; i++)
+  for (var i = 0; i < 4; i++)
+  {
+    playerPosition = controls.getObject().position;
+    playerPosition.y -= 10;
+    raycaster.set(playerPosition, playerRays[i]);
+    var intersections = raycaster.intersectObjects(cubes);
+    if (intersections.length > 0 && intersections[0].distance < 10)
     {
-        raycaster.ray.origin.copy(controls.getObject().position);
-        raycaster.ray.origin.y -= 10;
-        raycaster.ray.direction.copy(playerRays[i]);
-        var intersections = raycaster.intersectObjects(cubes);
-        if (intersections.length > 0)
-            if (intersections[0].distance < 10)
-            {
-                if (i == 0)
-                    console.log('Backward');
-                else if (i == 1)
-                    console.log('Left');
-                else if (i == 2)
-                    console.log('Forward');
-                else if (i == 3)
-                    console.log('Right');
-            }
+      if (i == 0)
+        console.log('Backward');
+      else if (i == 1)
+        console.log('Left');
+      else if (i == 2)
+        console.log('Forward');
+      else if (i == 3)
+        console.log('Right');
     }
+  }
 
-    controls.update();
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
-    renderer.render(scene, camera);
+  controls.update();
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+  renderer.render(scene, camera);
 }
 
 render();
