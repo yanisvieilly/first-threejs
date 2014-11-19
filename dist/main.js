@@ -1,8 +1,8 @@
 var ASPECT, FAR, FOV, HEIGHT, NEAR, RANDOM_CUBES_NUMBER, WIDTH, camera, container, controls, cube, cubeGeometry, cubeMaterial, cubes, hasPointerLock, i, light, plane, planeGeometry, planeMaterial, playerRays, pointerLockChange, pointerLockError, randomColor, randomMaterial, randomNumbers, raycaster, render, renderer, scene, spotLight, _i;
 
-WIDTH = 1280;
+WIDTH = 1920;
 
-HEIGHT = 720;
+HEIGHT = 1080;
 
 FOV = 90;
 
