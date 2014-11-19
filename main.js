@@ -113,7 +113,7 @@ function render() {
 
   for (var i = 0; i < 4; i++)
   {
-    playerPosition = controls.getObject().position;
+    playerPosition = controls.getObject().position.clone();
     playerPosition.y -= 10;
     raycaster.set(playerPosition, playerRays[i]);
     var intersections = raycaster.intersectObjects(cubes);
