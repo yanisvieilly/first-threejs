@@ -41,6 +41,13 @@ if (hasPointerLock) {
   });
 }
 
+document.addEventListener('keydown', function(e) {
+  if (e.keyCode === 70) {
+    container.requestFullScreen = container.requestFullScreen || container.mozRequestFullScreen || container.webkitRequestFullScreen;
+    return container.requestFullScreen();
+  }
+});
+
 renderer = new THREE.WebGLRenderer();
 
 renderer.setSize(WIDTH, HEIGHT);

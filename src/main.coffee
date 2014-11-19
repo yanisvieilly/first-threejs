@@ -33,6 +33,11 @@ if hasPointerLock
     container.requestPointerLock = container.requestPointerLock or container.mozRequestPointerLock or container.webkitRequestPointerLock
     container.requestPointerLock()
 
+document.addEventListener 'keydown', (e) ->
+  if e.keyCode is 70
+    container.requestFullScreen = container.requestFullScreen or container.mozRequestFullScreen or container.webkitRequestFullScreen
+    container.requestFullScreen()
+
 renderer = new THREE.WebGLRenderer()
 renderer.setSize WIDTH, HEIGHT
 renderer.setClearColor 0xFADED2, 1.0
