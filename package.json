@@ -1,0 +1,8 @@
+{
+  "name": "first-threejs",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.8.10"
+  }
+}
