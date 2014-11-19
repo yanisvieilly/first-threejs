@@ -10,8 +10,6 @@ RANDOM_CUBES_NUMBER = 400
 
 container = document.getElementById 'container'
 
-time = Date.now()
-
 hasPointerLock = 'pointerLockElement' of document or 'mozPointerLockElement' of document or 'webkitPointerLockElement' of document
 
 if hasPointerLock

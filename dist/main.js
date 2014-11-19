@@ -1,4 +1,4 @@
-var ASPECT, FAR, FOV, HEIGHT, NEAR, RANDOM_CUBES_NUMBER, WIDTH, camera, container, controls, cube, cubeGeometry, cubeMaterial, cubes, hasPointerLock, i, light, plane, planeGeometry, planeMaterial, playerRays, pointerLockChange, pointerLockError, randomColor, randomMaterial, randomNumbers, raycaster, render, renderer, scene, spotLight, time, _i;
+var ASPECT, FAR, FOV, HEIGHT, NEAR, RANDOM_CUBES_NUMBER, WIDTH, camera, container, controls, cube, cubeGeometry, cubeMaterial, cubes, hasPointerLock, i, light, plane, planeGeometry, planeMaterial, playerRays, pointerLockChange, pointerLockError, randomColor, randomMaterial, randomNumbers, raycaster, render, renderer, scene, spotLight, _i;
 
 WIDTH = 1280;
 
@@ -15,8 +15,6 @@ FAR = 10000;
 RANDOM_CUBES_NUMBER = 400;
 
 container = document.getElementById('container');
-
-time = Date.now();
 
 hasPointerLock = 'pointerLockElement' in document || 'mozPointerLockElement' in document || 'webkitPointerLockElement' in document;
 
