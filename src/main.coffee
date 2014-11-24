@@ -99,7 +99,6 @@ render = ->
   requestAnimationFrame render
 
   playerPosition = controls.getObject().position.clone()
-  playerPosition.y -= 10
   raycaster.set playerPosition, controls.getDirection(new THREE.Vector3())
   intersections = raycaster.intersectObjects cubes
   if intersections.length > 0 and intersections[0].distance < 10
