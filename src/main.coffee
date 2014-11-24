@@ -95,30 +95,15 @@ scene.add light
 
 raycaster = new THREE.Raycaster()
 
-playerRays = [
-  new THREE.Vector3 0, 0, 1  # Backward
-  new THREE.Vector3 1, 0, 0  # Left
-  new THREE.Vector3 0, 0, -1 # Forward
-  new THREE.Vector3 -1, 0, 0 # Right
-]
-
 render = ->
   requestAnimationFrame render
 
-  for i in [0..3]
-    playerPosition = controls.getObject().position.clone()
-    playerPosition.y -= 10
-    raycaster.set playerPosition, playerRays[i]
-    intersections = raycaster.intersectObjects cubes
-    if intersections.length > 0 and intersections[0].distance < 10
-      if i is 0
-        console.log 'Backward'
-      else if i is 1
-        console.log 'Left'
-      else if i is 2
-        console.log 'Forward'
-      else if i is 3
-        console.log 'Right'
+  playerPosition = controls.getObject().position.clone()
+  playerPosition.y -= 10
+  raycaster.set playerPosition, controls.getDirection(new THREE.Vector3())
+  intersections = raycaster.intersectObjects cubes
+  if intersections.length > 0 and intersections[0].distance < 10
+    console.log 'Forward collision'
 
   controls.update()
   cube.rotation.x += 0.01
